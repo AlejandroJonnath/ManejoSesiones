@@ -51,6 +51,7 @@ public class ProductosServlet extends HttpServlet{
             out.println("<html>");
             out.println("<head>");
             out.println("<meta charset=\"utf-8\">");  // Especificar encoding
+            out.println("<link rel=\"stylesheet\" href=\"css/estilos.css\">");
             out.println("<title>Lista de Productos</title>");  // Título de la pestaña
             out.println("</head>");
             out.println("<body>");
@@ -58,7 +59,7 @@ public class ProductosServlet extends HttpServlet{
             // 6. Título principal de la página
             out.println("<h1>Lista de productos</h1>");
 
-            out.println("<h3>Hola" + usernameOptional.get() + "</h3>");
+            out.println("<h3>Hola querido admin sapin " + usernameOptional.get() + "</h3>");
 
             // 7. Crear tabla para mostrar los productos
             out.println("<table border='1'>");  // Tabla con borde visible
@@ -91,6 +92,7 @@ public class ProductosServlet extends HttpServlet{
             out.println("<html>");
             out.println("<head>");
             out.println("<meta charset=\"utf-8\">");  // Especificar encoding
+            out.println("<link rel=\"stylesheet\" href=\"css/estilos.css\">");
             out.println("<title>Lista de Productos</title>");  // Título de la pestaña
             out.println("</head>");
             out.println("<body>");

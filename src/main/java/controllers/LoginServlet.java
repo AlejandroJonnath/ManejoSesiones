@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<meta charset=\"utf-8\">");  // Especificar encoding
+                out.println("<link rel=\"stylesheet\" href=\"css/login.css\">");
                 out.println("<title>Hola sapo" +usernameOptional.get() +"</title>");  // Título de la pestaña
                 out.println("</head>");
                 out.println("<body>");
@@ -77,8 +78,6 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession();
             //2) Seteo los valores de la sesión
             session.setAttribute("username", username);
-
-
 
             // Redirigir a la página de login (mostrará mensaje de bienvenida)
             resp.sendRedirect("login.html");

@@ -10,6 +10,7 @@ import service.LoginService;
 import service.LoginServiceSessionImplement;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Optional;
 
 @WebServlet("/logout")
@@ -24,7 +25,6 @@ public class Logout extends HttpServlet {
             HttpSession session= req.getSession();
             //Cerramos la sesión
             session.invalidate();
-
         }
 
         resp.sendRedirect(req.getContextPath()+"/login.html");
