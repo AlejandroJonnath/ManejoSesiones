@@ -21,7 +21,7 @@ del cliente al ingresar a la ruta del jsp.-->
       </div>
     </div>
     <div>
-      <lable for="pass">Password:</lable> <!-- Etiqueta para la contraseña (error de ortografía: label) -->
+      <label for="pass">Password:</label> <!-- Etiqueta para la contraseña (error de ortografía: label) -->
       <div>
         <input type="password" name="password" id="pass"> <!-- Campo para la contraseña -->
       </div>

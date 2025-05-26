@@ -3,14 +3,14 @@
  * Descripcion: Desarrollo de clase para poder mostrar mediante una retornacion la lista de la clase productos
  * el cual acompaña de un objeto donde se desarrolla un arreglo de tipo listado que contendra una cadena de
  * valores en cada atributo para visualizar esos datos.*/
-package service;
+package global.service;
 //Importacion de librerias
-import models.Productos;
-import java.util.ArrayList;
+import global.models.Productos;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class ProductoServiceImplement implements service.ProductoService { // Declara la clase que implementa la interfaz ProductoService
+public class ProductoServiceImplement implements ProductoService { // Declara la clase que implementa la interfaz ProductoService
 
     @Override
     public List<Productos> listar() {
@@ -20,3 +20,9 @@ public class ProductoServiceImplement implements service.ProductoService { // De
                 new Productos(3L, "Impresora", "tinta continua", 256.25));
     }
 }
+
+
+
+
+
+

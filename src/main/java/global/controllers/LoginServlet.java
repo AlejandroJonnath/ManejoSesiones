@@ -3,17 +3,15 @@
  * Fecha: 15/05/2025
  * Descripcion: Desarrollo de clase Login para que el cliente ingrese los datos requeridos para poder ingresar
  * y tener un vistaso de las coockies*/
-package controllers;
+package global.controllers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import service.LoginService;
-import service.LoginServiceImplement;
-import service.LoginServiceSessionImplement;
+import global.service.LoginService;
+import global.service.LoginServiceSessionImplement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Optional;
 
 // Definición del Servlet que manejará las rutas /login y /login.html

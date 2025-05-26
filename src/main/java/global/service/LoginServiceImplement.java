@@ -1,12 +1,11 @@
-package service;
+package global.service;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.Cookie;
 
 import java.util.Arrays;
 import java.util.Optional;
 
-public class LoginServiceImplement implements service.LoginService {
+public class LoginServiceImplement implements LoginService {
     @Override
     public Optional<String> getUserName(HttpServletRequest request) {
         //Obtenemos el valor de cookies que solicita el servidor

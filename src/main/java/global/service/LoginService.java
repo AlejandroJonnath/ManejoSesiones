@@ -1,4 +1,4 @@
-package service;
+package global.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 

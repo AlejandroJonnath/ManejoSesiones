@@ -3,18 +3,18 @@
  * Fecha: 15/05/2025
  * Descripcion: Desarrollo de clase productos de servlet para poder mostrar los productos mediante una tabla
  * */
-package controllers;
+package global.controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.Productos;
-import service.LoginService;
-import service.LoginServiceSessionImplement;
-import service.ProductoService;
-import service.ProductoServiceImplement;
+import global.models.Productos;
+import global.service.LoginService;
+import global.service.LoginServiceSessionImplement;
+import global.service.ProductoService;
+import global.service.ProductoServiceImplement;
 
 
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class ProductosServlet extends HttpServlet{
 
             // 6. Título principal de la página
             out.println("<h1>Lista de productos</h1>");
-            if(logeo==true){
+            if(logeo){
                 out.println("<h3>Hola querido " + usernameOptional.get() + "</h3>");
             }
             // 7. Crear tabla para mostrar los productos
@@ -68,7 +68,7 @@ public class ProductosServlet extends HttpServlet{
             out.println("<th>ID PRODUCTO</th>");
             out.println("<th>NOMBRE</th>");
             out.println("<th>CATEGORIA</th>");
-            if(logeo==true){
+            if(logeo){
                 out.println("<th>PRECIO</th>");
             }
             out.println("</tr>");
@@ -79,7 +79,7 @@ public class ProductosServlet extends HttpServlet{
                 out.println("<td>" + p.getId() + "</td>");  // Celda con ID
                 out.println("<td>" + p.getNombre() + "</td>");  // Celda con nombre
                 out.println("<td>" + p.getTipo() + "</td>");  // Celda con categoría/tipo
-                if(logeo==true){
+                if(logeo){
                     out.println("<td>" + p.getPrecio() + "</td>");
                 }
                 out.println("</tr>");

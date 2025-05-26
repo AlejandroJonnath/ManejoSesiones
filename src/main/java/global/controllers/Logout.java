@@ -1,4 +1,4 @@
-package controllers;
+package global.controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,11 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.LoginService;
-import service.LoginServiceSessionImplement;
+import global.service.LoginService;
+import global.service.LoginServiceSessionImplement;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Optional;
 
 @WebServlet("/logout")
