@@ -1,4 +1,4 @@
-/* Reset básico */
+
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ body {
     min-height: calc(100vh - 60px);
 }
 
-/* Sidebar izquierdo */
+/* Sidebar */
 .sidebar {
     width: 220px;
     background-color: #34495e;
