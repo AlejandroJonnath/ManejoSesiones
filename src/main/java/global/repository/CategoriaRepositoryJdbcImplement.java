@@ -70,11 +70,21 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria> {
 
     @Override
     public void eliminar(int id) throws SQLException {
-
+        String sql = "update categoria set condicion = 0 where idCategoria = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
     }
 
-
-
+    /*@Override
+    public void eliminar(int id) throws SQLException {
+        String sql = "delete from categoria where idCategoria = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }*/
 
 
     private static Categoria getCategoria(ResultSet rs) throws SQLException {

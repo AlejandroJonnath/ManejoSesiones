@@ -33,28 +33,8 @@ public class LoginServlet extends HttpServlet {
 
         // Si existe la cookie (usuario ya autenticado)
         if (usernameOptional.isPresent()) {
-            // Configurar tipo de contenido de la respuesta
-            resp.setContentType("text/html;charset=UTF-8");
-
-            // Usar try-with-resources para manejo automático del PrintWriter
-            try (PrintWriter out = resp.getWriter()) {
-                // Generar HTML de respuesta dinámicamente
-                out.print("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<meta charset=\"utf-8\">");  // Especificar encoding
-                out.println("<link rel=\"stylesheet\" href=\"css/login.css\">");
-                out.println("<title>Hola sapo" +usernameOptional.get() +"</title>");  // Título de la pestaña
-                out.println("</head>");
-                out.println("<body>");
-                // Mostrar mensaje personalizado con el nombre de usuario
-                out.println("<h1>Hola "+ usernameOptional.get()+" ya iniciaste sesión anteriormente!</h1>");
-                // Enlace para volver al inicio
-                out.println("<p><a href='index.html'>Volver al inicio</a></p>");
-                out.println("<p><a href='logout'>Cerrar Sesión</a></p>");
-                out.println("</body>");
-                out.println("</html>");
-            }
+            // 2) Si existe, nos mandará directamente al Main.jsp
+            getServletContext().getRequestDispatcher("/Main.jsp").forward(req, resp);
         } else {
             // Si no hay cookie, mostrar el formulario de login (JSP)
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
