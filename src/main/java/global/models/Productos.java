@@ -27,6 +27,9 @@ public class Productos { // Declara la clase Producto
         this.precio = precio;
     }
 
+    //Se crean los getters y setter porque estamos encapsulando las variables de arriba
+    //Para poder tener acceso tengo que generar métodos para poder acceder a esos valores
+
     // Método getter para obtener el ID del producto
     public Long getId() {
         return id;
