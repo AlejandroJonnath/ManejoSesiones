@@ -39,8 +39,8 @@ Esto configura nuestra página para usar:
     <!-- BARRA LATERAL (MENÚ) -->
     <div class="sidebar">
         <ul>
-            <li><a href="#">Productos</a></li> <!-- Enlace activo actual -->
-            <li><a href="#">Prueba 2</a></li> <!-- Otros enlaces de ejemplo -->
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Prueba 2</a></li>
             <li><a href="#">Prueba 3</a></li>
             <li><a href="#">Prueba 4</a></li>
         </ul>
@@ -48,7 +48,7 @@ Esto configura nuestra página para usar:
 
     <!-- CONTENIDO CENTRAL -->
     <div class="main-content">
-        <h2>Productos</h2> <!-- Subtítulo de la sección -->
+        <h2>Productos</h2>
 
         <!-- 5. TABLA DE PRODUCTOS -->
         <table>
