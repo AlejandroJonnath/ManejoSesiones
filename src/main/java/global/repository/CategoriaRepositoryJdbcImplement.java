@@ -34,7 +34,7 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria> {
 
 
     @Override
-    public Categoria porId(int id) throws SQLException { //Aquí está el id del método
+    public Categoria porId(Integer id) throws SQLException { //Aquí está el id del método
         //Creo un objeto de tipo categoría nulo
         Categoria categoria = null;
         try(PreparedStatement stmt = conn.prepareStatement(
@@ -69,23 +69,13 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria> {
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
+    public void eliminar(Integer id) throws SQLException {
         String sql = "update categoria set condicion = 0 where idCategoria = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }
     }
-
-    /*@Override
-    public void eliminar(int id) throws SQLException {
-        String sql = "delete from categoria where idCategoria = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-        }
-    }*/
-
 
     private static Categoria getCategoria(ResultSet rs) throws SQLException {
         Categoria c = new Categoria(); //Creo un nuevo objeto vació de la clase categoría porque lo lleno con lo de abajo

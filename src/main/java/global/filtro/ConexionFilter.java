@@ -27,6 +27,7 @@ public class ConexionFilter implements Filter {
             }
 
             try{
+                //El cliente settea los atributos de la conexión
                request.setAttribute("conn", conn);
                chain.doFilter(request, response);
                conn.commit();
