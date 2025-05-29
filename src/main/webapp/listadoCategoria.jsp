@@ -17,9 +17,19 @@
 
 <head>
     <title>Listado Categoría</title>
+    <link rel="stylesheet" href="<%= request.getContextPath()%>css/listadoCategoria.css">
 </head>
 
 <body>
+
+<%
+    if(username.isPresent()){%>
+
+<div style="color:blue;"> Hola <%= username.get()%>, bienvenido a la aplicación</div>
+
+<div><p><a href="${pageContext.request.contextPath}/categoria/form">Ingrese el producto</a></p></div>
+    <%}%>
+
 
 <h1>Listado Categoría</h1>
 <table>

@@ -49,6 +49,8 @@ Esto configura nuestra página para usar:
     <!-- CONTENIDO CENTRAL -->
     <div class="main-content">
         <h2>Productos</h2>
+        
+        <button><a href="categoria">HOLASAPIN</a></button>
 
         <!-- 5. TABLA DE PRODUCTOS -->
         <table>

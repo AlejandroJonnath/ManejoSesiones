@@ -47,24 +47,33 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria> {
         return categoria;
     }
 
+
     @Override
     public void guardar(Categoria categoria) throws SQLException {
-        //declaro una variable de tipo string
+        // Declaración de la variable SQL
         String sql;
-        //si el id de categoria es distinto de nulo y es mayor a 0
 
-        if (categoria.getIdCategoria() != null || categoria.getIdCategoria()>0) {
-            //en la variable sql va a guardar el siguiente sql
-            sql = "update categoria set nombre=?, descripcion=? where idCategoria=?";
-        }else {
-            sql = "insert into categoria(nombre, descripcion, condicion) values(?, ?, 1)";
-        }
+        // Determina si se trata de una actualización (UPDATE) o una inserción nueva (INSERT)
+        boolean esUpdate = categoria.getIdCategoria() != null && categoria.getIdCategoria() > 0;
 
-        try(PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setString(1,categoria.getNombre());
-            stmt.setString(2,categoria.getDescripcion());
-            stmt.setInt(3,categoria.getIdCategoria());
-            stmt.executeUpdate();
+        if (esUpdate) {
+            // Si el ID existe, se actualiza la categoría existente
+            sql = "UPDATE categoria SET nombre = ?, descripcion = ? WHERE idCategoria = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, categoria.getNombre());
+                stmt.setString(2, categoria.getDescripcion());
+                stmt.setLong(3, categoria.getIdCategoria());
+                stmt.executeUpdate();
+            }
+        } else {
+            // Si el ID no existe, se inserta una nueva categoría
+            // La condición se pone en 1 por defecto (activo)
+            sql = "INSERT INTO categoria (nombre, descripcion, condicion) VALUES (?, ?, 1)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, categoria.getNombre());
+                stmt.setString(2, categoria.getDescripcion());
+                stmt.executeUpdate();
+            }
         }
     }
 
