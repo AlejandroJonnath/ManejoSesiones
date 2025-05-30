@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="global.models.Categoria" %>
 <%@ page import="global.models.Productos" %>
+<%@ page import="global.models.Categoria"%>
 <%
   Productos productos = (Productos) request.getAttribute("productos");
   if (productos == null) {
@@ -10,7 +11,7 @@
 <html>
 <head>
   <%-- El título de la página cambia según si estamos editando o creando una categoría --%>
-  <title>Nueva Categoría</title>
+  <title>Nuevo Producto</title>
 
   <link rel="stylesheet" href="<%= request.getContextPath()%>css/formularioCategoria.css">
 </head>
@@ -20,12 +21,12 @@
 <h1>Nuevos Productos</h1>
 
 <%-- Formulario que envía los datos al controlador CategoriaFormControlador (POST) --%>
-<form action="<%= request.getContextPath() %>/productos/form" method="post">
+<form action="<%= request.getContextPath() %>/productos" method="post">
 
   <input type="hidden" name="idArticulo" value="<%= productos.getIdArticulo() != null ? productos.getIdArticulo() : 0 %>"/>
   <input type="hidden" name="idCategoria" value="<%= productos.getIdCategoria() != null ? productos.getIdCategoria() : 0 %>" />
 
-  <label for="codigo">Codigo</label>
+  <label for="codigo">Código</label>
   <input type="text" id="codigo" name="codigo" value="<%= productos.getCodigo() != null ? productos.getCodigo() : "" %>" required />
 
   <br/> <br/>

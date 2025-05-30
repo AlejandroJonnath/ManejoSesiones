@@ -35,12 +35,13 @@ public class ProductosRepositoryJdbcImplement implements Repository<Productos> {
 
     @Override
     public Productos porId(Integer id) throws SQLException {
-        //Creo un objeto de tipo categoría nulo
         Productos productos = null;
-        try(PreparedStatement stmt = conn.prepareStatement("select * from articulo where id = ?")){ //Selecciona todo de categoria donde el id del método
-            stmt.setInt(1, id); //Setea el valor en la columna número uno
-            try(ResultSet rs = stmt.executeQuery()){
-                productos = getProductos(rs);
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articulo WHERE idArticulo = ?")) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {  // Muy importante para evitar errores
+                    productos = getProductos(rs);
+                }
             }
         }
         return productos;
@@ -48,37 +49,28 @@ public class ProductosRepositoryJdbcImplement implements Repository<Productos> {
 
     @Override
     public void guardar(Productos productos) throws SQLException {
-        // Declaración de la variable SQL
         String sql;
-
-        // Determina si se trata de una actualización (UPDATE) o una inserción nueva (INSERT)
-        boolean esUpdate = productos.getIdCategoria() != null && productos.getIdCategoria() > 0;
+        boolean esUpdate = productos.getIdArticulo() != null && productos.getIdArticulo() > 0;
 
         if (esUpdate) {
-            // Si el ID existe, se actualiza la categoría existente
-            sql = "UPDATE articulo SET codigo= ?, nombre = ?, stock = ?, descripcion = ?, imagen= ? WHERE idCategoria = ?";
+            sql = "UPDATE articulo SET codigo = ?, nombre = ?, stock = ?, descripcion = ?, imagen = ? WHERE idArticulo = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setLong(1, productos.getIdArticulo());
-                stmt.setLong(2, productos.getIdCategoria());
-                stmt.setString(3, productos.getCodigo());
-                stmt.setString(4, productos.getNombre());
-                stmt.setLong(5, productos.getStock());
-                stmt.setString(6, productos.getDescripcion());
-                stmt.setString(7, productos.getImagen());
+                stmt.setString(1, productos.getCodigo());
+                stmt.setString(2, productos.getNombre());
+                stmt.setInt(3, productos.getStock());
+                stmt.setString(4, productos.getDescripcion());
+                stmt.setString(5, productos.getImagen());
+                stmt.setInt(7, productos.getIdArticulo());
                 stmt.executeUpdate();
             }
         } else {
-            // Si el ID no existe, se inserta una nueva categoría
-            // La condición se pone en 1 por defecto (activo)
-            sql = "INSERT INTO categoria (codigo, nombre, stock, descripcion, imagen, condicion) VALUES (?, ?, ?, ?, ? , 1)";
+            sql = "INSERT INTO articulo (codigo, nombre, stock, descripcion, imagen, condicion) VALUES (?, ?, ?, ?, ?, 1)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setLong(1, productos.getIdArticulo());
-                stmt.setLong(2, productos.getIdCategoria());
-                stmt.setString(3, productos.getCodigo());
-                stmt.setString(4, productos.getNombre());
-                stmt.setLong(5, productos.getStock());
-                stmt.setString(6, productos.getDescripcion());
-                stmt.setString(7, productos.getImagen());
+                stmt.setString(1, productos.getCodigo());
+                stmt.setString(2, productos.getNombre());
+                stmt.setInt(3, productos.getStock());
+                stmt.setString(4, productos.getDescripcion());
+                stmt.setString(5, productos.getImagen());
                 stmt.executeUpdate();
             }
         }
@@ -86,14 +78,13 @@ public class ProductosRepositoryJdbcImplement implements Repository<Productos> {
 
     @Override
     public void eliminar(Integer id) throws SQLException {
-
-        String sql = "update categoria set condicion = 0 where idCategoria = ?";
+        String sql = "UPDATE articulo SET condicion = 0 WHERE idArticulo = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }
-
     }
+
 
     private static Productos getProductos(ResultSet rs) throws SQLException {
         Productos p = new Productos(); //Creo un nuevo objeto vació de la clase categoría porque lo lleno con lo de abajo
